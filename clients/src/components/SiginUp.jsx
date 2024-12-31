@@ -1,38 +1,31 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom"; // Import useNavigate
 import "./SignUp.css"; // Importing the CSS file
 import axios from "axios";
 
 function SignUp() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [phone, setPhone] = useState("");
-  const [error, setError] = useState("");
+  const [name, setName] = useState(null);
+  const [email, setEmail] = useState(null);
+  const [password, setPassword] = useState(null);
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log("Sign Up user");
 
-    // Simple validation
-    if (!name || !email || !password || !phone) {
-      setError("Please fill in all fields.");
-      return;
-    }
-
-    // Handle actual sign-up (make the POST request to the backend)
+    // Send all the necessary data: name, email, and password
     axios
-      .post("http://localhost:5000/signup", { name, email, password, phone })
+      .post("http://localhost:5000/user/signup", { name, email, password }) // Send all 3 fields
       .then((response) => {
-        console.log("User registered successfully:", response.data);
-        // Redirect or show success message
-        // You can add a redirect here if needed
+        console.log(response); // Log the response
+        // If sign up is successful, navigate to login page
+        if (response.status === 200) {
+          navigate("/"); // Redirect to login page after successful sign up
+        }
       })
       .catch((err) => {
-        console.error("Error registering user:", err);
-        setError("Error during registration, please try again.");
+        console.log(err); // Handle errors during sign up
       });
-
-    setError(""); // Clear any previous errors
   };
 
   return (
@@ -75,21 +68,6 @@ function SignUp() {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <div className="input-group">
-          <label htmlFor="phone">Phone Number:</label>
-          <input
-            type="text"
-            name="phone"
-            placeholder="Phone Number"
-            id="phone"
-            autoComplete="off"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-          />
-        </div>
-
-        {error && <div className="error-message">{error}</div>}
-
         <button type="submit" className="signup-button">
           Sign Up
         </button>

@@ -1,0 +1,115 @@
+/* Overall container for the dashboard */
+.dashboard-container {
+  display: flex;
+  height: 100vh;
+  background-color: #f4f6f9;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Sidebar styles */
+.sidebar {
+  width: 25%;
+  background-color: #2c3e50;
+  color: white;
+  padding: 20px;
+  box-sizing: border-box;
+  height: 100vh;
+  position: fixed;
+}
+
+.sidebar h2 {
+  margin-top: 0;
+  font-size: 20px;
+  color: #ecf0f1;
+  font-weight: 600;
+}
+
+/* Sidebar links */
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  padding: 15px 0;
+  border-bottom: 1px solid #34495e;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.sidebar ul li:hover {
+  background-color: #34495e;
+  transition: background-color 0.3s ease;
+}
+
+.sidebar ul li a {
+  color: white;
+  text-decoration: none;
+  padding: 0 20px;
+  display: block;
+}
+
+/* Main content styles */
+.main-content {
+  margin-left: 25%; /* Ensures the main content does not overlap with the sidebar */
+  width: 75%;
+  padding: 30px;
+  background-color: #ecf0f1;
+  box-sizing: border-box;
+}
+
+.main-content h1 {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #2c3e50;
+}
+
+.main-content p {
+  font-size: 18px;
+  color: #7f8c8d;
+  line-height: 1.5;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .dashboard-container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+  }
+
+  .main-content {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+/* Interactive buttons and links */
+button, .sidebar ul li a {
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Add a hover effect for links and buttons */
+button:hover, .sidebar ul li a:hover {
+  color: #3498db;
+}
+
+button {
+  background-color: #3498db;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+

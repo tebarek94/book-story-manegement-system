@@ -1,35 +1,35 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom"; // Import useNavigate
 import "./Login.css"; // Importing the CSS file
 import axios from "axios";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [loginUser, setLoginUser] = useState("");
-  const [error, setError] = useState("");
-  useEffect(() => {
-    axios
-      .post("http://localhost:5000/")
-      .then((respons) => alert(setLoginUser("User Login successfully")))
-      .catch((err) => console.log(err));
-  });
+  const navigate = useNavigate(); // Initialize useNavigate
+
   const handleSubmit = (e) => {
-    e.preventDefault();
-    // Simple validation
-    if (!email || !password) {
-      setError("Please fill in both fields.");
-      return;
-    }
-    // Handle actual login (e.g., API call)
-    console.log("Logging in with", email, password);
-    setError(""); // Clear any previous errors
+    e.preventDefault(); // Prevent form submission
+    console.log("Login user");
+
+    axios
+      .post("http://localhost:5000/user/login", { email, password }) // Send email and password in the request body
+      .then((response) => {
+        console.log(response); // Log the response
+        // If login is successful, navigate to home page
+        if (response.status === 200) {
+          navigate("/home"); // Redirect to home page
+        }
+      })
+      .catch((err) => {
+        console.log(err); // Log the error if login fails
+      });
   };
 
   return (
     <div className="login-container">
       <div className="login-header">Login</div>
-      <form onSubmit={handleSubmit} className="login-form">
+      <form className="login-form" onSubmit={handleSubmit}>
         <div className="input-group">
           <label htmlFor="email">Email:</label>
           <input
@@ -55,13 +55,7 @@ function Login() {
           />
         </div>
 
-        {error && <div className="error-message">{error}</div>}
-
-        <button
-          type="submit"
-          className="login-button"
-          onClick={() => alert(loginUser)}
-        >
+        <button type="submit" className="login-button">
           Login
         </button>
 

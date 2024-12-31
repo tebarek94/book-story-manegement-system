@@ -1,0 +1,63 @@
+/* Overall container for the home page */
+.home {
+  font-family: 'Arial', sans-serif;
+  padding: 20px;
+  background-color: #f4f6f9;
+  color: #2c3e50;
+}
+
+/* Title styling */
+.home h1 {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #34495e;
+  text-align: center;
+}
+
+/* Table styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #3498db;
+  color: white;
+  font-weight: bold;
+}
+
+td {
+  color: #7f8c8d;
+}
+
+tr:hover {
+  background-color: #ecf0f1;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Responsive table design */
+@media (max-width: 768px) {
+  .home {
+    padding: 10px;
+  }
+
+  table {
+    font-size: 14px;
+  }
+
+  th, td {
+    padding: 10px;
+  }
+}

@@ -1,0 +1,64 @@
+/* Container for the Add Product form */
+.add-product-form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading for the form */
+.add-product-form h1 {
+  text-align: center;
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Input fields */
+.add-product-form input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+/* Input focus effect */
+.add-product-form input:focus {
+  border-color: #3498db;
+  outline: none;
+}
+
+/* Submit button */
+.add-product-form button {
+  width: 100%;
+  padding: 12px;
+  background-color: #3498db;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Button hover effect */
+.add-product-form button:hover {
+  background-color: #2980b9;
+}
+
+/* Button focus effect */
+.add-product-form button:focus {
+  outline: none;
+}
+
+/* Optional error styling */
+.error-message {
+  color: red;
+  text-align: center;
+  font-size: 14px;
+}
